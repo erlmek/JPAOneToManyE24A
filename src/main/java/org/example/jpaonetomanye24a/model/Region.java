@@ -1,15 +1,23 @@
 package org.example.jpaonetomanye24a.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.Set;
 
 @Entity
 public class Region {
 
     @Id
+    @Column(length = 4)
     private String kode;
     private String navn;
     private String href;
+
+    @OneToMany(mappedBy = "region")
+    private Set<Kommune> kommune;
 
     public String getKode() {
         return kode;
