@@ -45,4 +45,13 @@ public class KommuneRestController {
         }
     }
 
+    @DeleteMapping("/kommune/{kode}")
+    public ResponseEntity<Void> deleteKommune(@PathVariable String kode) {
+        if (!kommuneRepository.existsById(kode)) {
+            return ResponseEntity.notFound().build();
+        }
+        kommuneRepository.deleteById(kode);
+        return ResponseEntity.noContent().build(); // 204 No Content
+    }
+
 }
