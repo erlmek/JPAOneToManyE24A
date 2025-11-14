@@ -36,7 +36,6 @@ public class ControllerExcpetionHandler {
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
     }
 
-
     @ExceptionHandler(ArithmeticException.class)
     public ResponseEntity<ErrorMessage> globalArithmeticExceptionHandler(Exception ex, WebRequest request) {
         ErrorMessage message = new ErrorMessage(
@@ -46,7 +45,6 @@ public class ControllerExcpetionHandler {
                 request.getDescription(false));
         return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
 
 
 }
