@@ -18,6 +18,14 @@ class RegionRepositoryTest {
     RegionRepository regionRepository;
 
     @Test
+    void testFemRegioner() {
+        List<Region> regions = regionRepository.findAll();
+        assertEquals(5, regions.size());
+
+    }
+
+
+    @Test
     void testOneRegion() {
         Region region = new Region();
         region.setKode("1024");
