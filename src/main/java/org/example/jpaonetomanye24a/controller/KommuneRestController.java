@@ -3,6 +3,7 @@ package org.example.jpaonetomanye24a.controller;
 
 import org.example.jpaonetomanye24a.model.Kommune;
 import org.example.jpaonetomanye24a.repositories.KommuneRepository;
+import org.example.jpaonetomanye24a.service.ApiServiceGetKommuner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,18 @@ public class KommuneRestController {
     @Autowired
     KommuneRepository kommuneRepository;
 
+    @Autowired
+    ApiServiceGetKommuner apiServiceGetKommuner;
+
     @GetMapping("/kommuner")
     public List<Kommune> getKommuner() {
         return kommuneRepository.findAll();
+    }
+
+    @GetMapping("/kommunestart/{letter}")
+    public ResponseEntity<List<Kommune>> getKommuneStartsWith(@PathVariable String letter) {
+        List<Kommune> lst = apiServiceGetKommuner.getKommunerStartsWith(letter.charAt(0));
+        return ResponseEntity.ok(lst);
     }
 
     @PostMapping("/kommune")

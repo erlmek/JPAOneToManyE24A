@@ -7,4 +7,6 @@ import java.util.List;
 public interface ApiServiceGetKommuner {
 
     List<Kommune> getKommuner();
+    List<Kommune> getKommunerStartsWith(Character c);
+
 }
